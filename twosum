@@ -1,0 +1,30 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+         int flag=1;
+         int[] arr=new int[2];
+         int sum;
+        for(int i=0;i<nums.length;i++)
+        {
+            sum=0;
+            for(int j=i;j<nums.length;j++)
+            {
+                sum=sum+nums[j];
+
+                if(sum==target && j!=i)
+                {
+                    arr[0]=i;
+                    arr[1]=j;
+                    flag=0;
+                    break;
+                }
+               else if(j!=i && sum!=target)
+                   sum=sum-nums[j];
+                
+            }
+            if(flag==0)
+                break;
+        }
+    return arr;        
+    
+}
+}
