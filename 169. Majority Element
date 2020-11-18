@@ -18,3 +18,7 @@ class Solution {
         
     }
 }
+
+OR
+Arrays.sort(nums)
+return nums[nums.length/2];
