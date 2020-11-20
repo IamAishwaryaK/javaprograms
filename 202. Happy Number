@@ -1,0 +1,28 @@
+class Solution {
+    public boolean isHappy(int n) {
+        int sum=0;
+        while(true)
+        {
+           sum=0;
+            while(n!=0)
+            {
+                int last=n%10;
+                sum=(last*last)+sum;
+                n=n/10;
+            }
+            
+        if(sum/10==0)
+        {
+                if(sum==1 || sum==7)
+                    return true;
+                else
+                    return false;
+            
+        }
+            n=sum;
+            
+            
+        }
+        
+    }
+}
