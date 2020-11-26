@@ -1,0 +1,26 @@
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        int j=0;
+        if(s.length()==0 && t.length()==0)
+            return true;
+        if(s.length()==0)
+            return true;
+        char[] str1=s.toCharArray();
+        char[] tar=t.toCharArray();
+        for(int i=0;i<tar.length;i++)
+        {
+            if(str1[j]==tar[i])
+            {
+                //System.out.println(j+" "+str1[j]+" "+tar[i]);
+                j++;
+                
+            }
+           // System.out.println(j+" "+tar.length);
+            if(j==str1.length)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+}
