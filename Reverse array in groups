@@ -1,0 +1,23 @@
+class Solution {
+    void reverseInGroups(ArrayList<Integer> arr, int n, int k) {
+        // code here
+        //int i,j;
+        int right,left;
+        for(int m=0;m<n;m=m+k)
+        {
+            left=m;
+            right=Math.min(m+k-1,n-1);
+            int temp;
+        while(left<right)
+        {
+            Collections.swap(arr,left,right);
+            
+            right--;
+            left++;
+            
+        }
+        }
+        
+       
+    }
+}
