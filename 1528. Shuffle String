@@ -1,0 +1,17 @@
+class Solution {
+    public String restoreString(String s, int[] indices) {
+        char string[]=s.toCharArray();//[indices.length];
+        char[] arr=new char[s.length()];
+        for(int i=0;i<string.length;i++)
+        {           
+            //char b=s.charAt(i);
+            arr[indices[i]]=string[i];
+          
+        }
+    
+        
+        String r=new String(arr);
+        return r;
+        
+    }
+}
