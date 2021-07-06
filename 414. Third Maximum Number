@@ -1,0 +1,35 @@
+import java.lang.*;
+class Solution {
+    public int thirdMax(int[] nums) {
+        Integer max=null,smax=null,tmax=null;
+        //System.out.println(tmax);
+        int flag=1;
+        for(Integer i:nums)//=0;i<nums.length;i++)
+        {
+            if(i.equals(max) || i.equals(tmax) || i.equals(smax)) continue;
+            if(max==null || i>max)
+            {
+                tmax=smax;
+                smax=max;
+                max=i;
+                
+            }
+            else if(smax==null || i>smax)
+            {
+                tmax=smax;
+                smax=i;
+                flag=0;
+            }
+            else if(tmax==null || i>tmax)
+            {
+                tmax=i;
+                flag=0;
+            }
+                
+        }
+        if((tmax==null)||(nums.length<3))
+            return max;
+        
+        return tmax;
+    }
+}
