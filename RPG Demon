@@ -1,0 +1,57 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+		Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+		int exp=s.nextInt();
+		Demon demon[]=new Demon[n];
+		for(int i=0;i<n;i++)
+		{
+		    int need=s.nextInt();
+		    int bonus=s.nextInt();
+		    demon[i]=new Demon(need,bonus);
+		}
+		Arrays.sort(demon,new SortByExp());
+		int count=0;
+		for(int k=0;k<n;k++)
+// 		System.out.println(demon[k].getNeed());
+		{
+		    if(exp>=demon[k].getNeed())
+		    {
+		        exp=demon[k].getBonus()+exp;
+		        count++;
+		    }
+		    else
+		    break;
+		}
+		System.out.println(count);
+	}
+}
+import java.util.*;
+class Demon{
+    
+    public Demon(){}
+    private int bonus,need;
+    public Demon(int need,int bonus)
+    {
+        this.need=need;
+        this.bonus=bonus;
+    }
+    public int getNeed()
+    {
+        return this.need;
+    }
+     public int getBonus(){
+         return this.bonus;
+     }
+}
+import java.util.*;
+class SortByExp implements Comparator<Demon>{
+    @Override
+		    public int compare(Demon d1,Demon d2)
+		    {
+		        return d1.getNeed()-d2.getNeed();
+		    }
+}
