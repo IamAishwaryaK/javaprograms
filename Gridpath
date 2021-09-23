@@ -1,0 +1,63 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+		Scanner s=new Scanner(System.in);
+	    int r=s.nextInt();
+	    //int c=s.nextInt();
+	    int[][] grid=new int[r][2];
+	    for(int i=0;i<r;i++)
+	    {
+	        for(int j=0;j<2;j++)
+	        {
+	            grid[i][j]=s.nextInt();
+	        }
+	    }
+	    int dp[][]=new int[r][2];
+	    for(int k=0;k<r;k++)
+	    {
+	        for(int f=0;f<2;f++)
+	        {
+	         dp[k][f]=0;
+	        }
+	    }
+	    dp[0][0]=grid[0][0];
+	    dp[0][1]=grid[0][1];
+	    int max0=0;
+	    int max1=0;
+	    for(int i=0;i<r;i++)
+	    {
+	       if(i+1<=r-1){
+	       if(grid[i][0]<grid[i+1][0])
+	       {
+	           dp[i+1][0]=dp[i][0]+grid[i+1][0];
+	           max0=dp[i+1][0];
+	       }
+	       else
+	       {
+	           max0=dp[i][0];
+	           break;
+	       }
+	       }
+	   }
+	        for(int i=0;i<r;i++)
+	       {
+	            if(i+1<=r-1){
+	       if(grid[i][1]<grid[i+1][1])
+	       {
+	           dp[i+1][1]=dp[i][1]+grid[i+1][1];
+	           max1=dp[i+1][1];
+	       }
+	       else
+	       {
+	           max1=dp[i][1];
+	       }
+	       }
+	       }
+	       System.out.println(Math.max(max0,max1));
+	       
+	    
+		
+	}
+}
