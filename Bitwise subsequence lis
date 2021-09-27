@@ -1,0 +1,62 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+		Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++)
+		arr[i]=s.nextInt();
+		Arrays.sort(arr);
+		int sub=arr[0];
+		int count=0;
+		int out[]=new int[n];
+		//out[0]=arr[0];
+		int lis[]=new int[n];
+		for(int j=0;j<n;j++)
+		lis[j]=1;
+		//int j=0;
+		for(int a=1;a<n;a++)
+		{
+		for(int i=0;i<n;i++)
+		{
+		    if(arr[a]<arr[i]&&lis[a]<lis[i]+1)
+		    {
+		       
+		    
+		    if((((arr[a]&arr[i])*2)<(arr[a]|arr[i]))&&((arr[a]&arr[i])!=0))
+		    {
+		         lis[a]=lis[i]+1;
+		    }
+		      //  System.out.println(arr[a]+" "+arr[i]);
+		      //  System.out.println(((arr[a]&arr[i])*2)+" "+(arr[a]|arr[i]));
+		      //  //count++;
+		      //  if(j==0)
+		      //  {
+		      //      out[j]=arr[a];
+		      //      j++;
+		      //      out[j]=arr[i];
+		      //      j++;
+		      //      System.out.println(out[j-1]+" "+out[j-2]);
+		      //  }
+		      //  else
+		      //  {
+		      //  sub=arr[i];
+		      //  out[j]=arr[i];
+		      //  System.out.println(out[j]);
+		      //  j++;
+		      //  }
+		        
+		    }
+		}
+		}
+		int max=0;
+		for(int k=0;k<n;k++)
+		{
+		    if(max<lis[k])
+		    max=lis[k];
+		}
+		System.out.println(max);
+	}
+}
