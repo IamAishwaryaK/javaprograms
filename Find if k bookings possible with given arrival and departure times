@@ -1,0 +1,81 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+
+import java.util.*;
+import java.lang.*;
+class Pair{
+    int x,y;
+    Pair(){
+        
+    }
+    Pair(int x,int y)
+    {
+        this.x=x;
+        this.y=y;
+    }
+   
+}
+class Compare implements Comparator<Pair>
+{
+     @Override
+    public int compare(Pair q,Pair w)
+    {
+        return q.x-w.x;
+    }
+}
+public class Main
+{
+    public static boolean areBookingPossible(int arr[],int dep[],int k,int n)
+    {
+        Pair a[]=new Pair[2*n];
+        int j=0;
+        for(int i=0;i<n;i++)
+        {
+            a[i+j]=new Pair(arr[i],1);
+            a[i+j+1]=new Pair(dep[i],0);
+            j++;
+            
+        }
+       // Compare obj=new Compare();
+        Arrays.sort(a,new Compare());
+        //Arrays.sort(a);
+        int cur=0,max=0;
+        for(int i=0;i<2*n;i++)
+        {
+            if(a[i].y==1)
+            {
+                cur++;
+                max=Math.max(cur,max);
+                
+            }
+            else
+            cur--;
+        }
+        return(k>=max);
+    }
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+		Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+		int arr[]=new int[n];
+		int dep[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+		    arr[i]=s.nextInt();
+		}
+		for(int i=0;i<n;i++)
+		{
+		    dep[i]=s.nextInt();
+		}
+		int k=s.nextInt();
+		System.out.println(areBookingPossible(arr,dep,k,n));
+	}
+
+    
+
+}
