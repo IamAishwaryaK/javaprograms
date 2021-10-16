@@ -1,0 +1,81 @@
+import java.util.*;
+import java.lang.*;
+
+ class Compare implements Comparator<Items>{
+    
+      @Override
+      public int compare(Items i1,Items i2)
+      {
+          //return i2.ratio-i1.ratio;
+           return i2.ratio-(i1.ratio);
+      }
+}
+ class Items{
+    int weight,value;
+    int ratio;
+    Items(){
+        
+    }
+    Items(int weight,int value,int ratio)
+    {
+        this.weight=weight;
+        this.value=value;
+        this.ratio=ratio;
+    }
+}
+public class Main
+{
+  public static double getmaximumValue(int weight[],int value[],int capacity,int n)
+  {
+      Items item[]=new Items[n];
+      for(int i=0;i<n;i++)
+      {
+          item[i]=new Items(weight[i],value[i],value[i]/weight[i]);
+      }
+      Arrays.sort(item,new Compare());
+      for(int j=0;j<n;j++)
+      System.out.println(item[j].weight+" "+item[j].value+" "+item[j].ratio);
+      
+      double totalvalue=0;
+      for(int i=0;i<n;i++)
+      {
+          int currweight=item[i].weight;
+          int currvalue=item[i].value;
+          if(capacity-currweight>=0)
+          {
+              capacity=capacity-currweight;
+              totalvalue=totalvalue+currvalue;
+              System.out.println(totalvalue);
+          }
+          else
+          {
+              double frac=(double)capacity/(double)currweight;
+              totalvalue=totalvalue+(frac*currvalue);
+              capacity=capacity-((capacity/currweight)*currweight);
+              
+              System.out.println("aaaaaaa"+" "+totalvalue);
+              break;
+          }
+      }
+      return totalvalue;
+  }
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+		Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+		int[] weight=new int[n];
+		int[] value=new int[n];
+		for(int i=0;i<n;i++)
+		{
+		    weight[i]=s.nextInt();
+		}
+		for(int i=0;i<n;i++)
+		{
+		    value[i]=s.nextInt();
+		}
+		int capacity=s.nextInt();
+		System.out.println(getmaximumValue(weight,value,capacity,n));
+	}
+
+    
+}
